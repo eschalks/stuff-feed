@@ -4,8 +4,11 @@ version := "1.0-SNAPSHOT"
 
 libraryDependencies ++= Seq(
   jdbc,
-  anorm,
-  cache
-)     
+  cache,
+  "com.typesafe.slick" %% "slick" % "1.0.1",
+  "com.typesafe.play" %% "play-slick" % "0.5.0.8",
+  "mysql" % "mysql-connector-java" % "5.1.27",
+  "com.github.tototoshi" %% "slick-joda-mapper" % "0.4.0"
+)
 
 play.Project.playScalaSettings
