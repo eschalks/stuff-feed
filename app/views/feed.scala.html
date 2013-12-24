@@ -1,4 +1,4 @@
-@(feed: models.Feed, posts: Seq[models.FeedPost])
+@(feed: models.Feed, posts: Seq[(models.FeedPost, models.User)])
 
 @main(feed.name) {
     @for(post <- posts) {

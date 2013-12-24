@@ -1,4 +1,4 @@
-@(posts: Seq[models.FeedPost])
+@(posts: Seq[(models.FeedPost, models.User)])
 
 @main("All") {
     @for(post <- posts) {

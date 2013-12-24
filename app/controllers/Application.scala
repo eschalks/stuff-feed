@@ -17,6 +17,7 @@ object Application extends Controller {
     val feed = Feeds.get(feedId)
     if (feed.isDefined) {
       val posts = FeedPosts.findForFeed(feedId, 0, 10)
+
       Ok(views.html.feed(feed.get, posts))
     } else {
       Ok(views.html.createFeed(feedId))

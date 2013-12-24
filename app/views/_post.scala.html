@@ -1,9 +1,18 @@
-@(post: models.FeedPost)
+@(post: (models.FeedPost, models.User))
 
 
 <div class="row link-row">
     <div class="col-md-1 col-xs-1"><i class="fa fa-check-circle"></i></div>
     <div class="col-md-11 col-xs-11">
-        <a href="@post.linkUrl">@post.title</a>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="@post._1.linkUrl">@post._1.title</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 post-details">
+                Posted @post._1.getTimeString by @post._2.username
+            </div>
+        </div>
     </div>
 </div>
