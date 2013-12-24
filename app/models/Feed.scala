@@ -2,6 +2,7 @@ package models
 import play.api.db.slick.Config.driver.simple._
 import play.api.Play.current
 import play.api.db.DB
+import play.api.Logger
 
 case class Feed(id: String, name: String)
 
@@ -27,8 +28,13 @@ object Feeds extends Table[Feed]("feed") {
     }
   }
 
-  def findAll = database.withSession {
+  def findTopFeeds() = database.withSession { implicit s: Session =>
+    val q = Query(Feeds)
+            .map(feed => (feed, FeedPosts.where(_.feedId === feed.id).length))
+            .sortBy(_._2.desc)
 
+    Logger.info(q.selectStatement)
+    q.list
   }
 
   def get(id: String) = {

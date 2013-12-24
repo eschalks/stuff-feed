@@ -51,6 +51,6 @@ object FeedPosts extends Table[FeedPost]("feed_post") {
 
   private def feedPostQuery = for {
     fp <- FeedPosts
-    u <- Users if fp.userId === u.id
+    u <- fp.fkUser
   } yield (fp, u)
 }

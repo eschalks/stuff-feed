@@ -24,4 +24,9 @@ object Application extends Controller {
     }
   }
 
+  def browse = Action {
+    val topFeeds = Feeds.findTopFeeds()
+    Ok(views.html.browse(topFeeds))
+  }
+
 }
