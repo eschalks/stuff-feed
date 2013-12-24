@@ -1,4 +1,7 @@
+@(posts: Seq[models.FeedPost])
+
 @main("All") {
-
-
+    @for(post <- posts) {
+        @views.html._post(post)
+    }
 }

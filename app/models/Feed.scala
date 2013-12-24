@@ -22,12 +22,20 @@ object Feeds extends Table[Feed]("feed") {
 
     val newFeed = Feed(id, name)
 
-    database.withSession { implicit db:Session =>
+    database.withSession { implicit s:Session =>
       Feeds.insert(newFeed)
     }
   }
 
   def findAll = database.withSession {
 
+  }
+
+  def get(id: String) = {
+    database.withSession { implicit s: Session =>
+      val q = Query(Feeds)
+                .filter(_.id === id)
+      q.firstOption
+    }
   }
 }

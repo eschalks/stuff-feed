@@ -1,0 +1,7 @@
+@(feed: models.Feed, posts: Seq[models.FeedPost])
+
+@main(feed.name) {
+    @for(post <- posts) {
+        @views.html._post(post)
+    }
+}
